@@ -19,13 +19,6 @@ tipos_bodeguero a una lista.
 
 jd = json data, es una variable que carga los datos de la request hacia el body de la appweb
 
-https://www.youtube.com/watch?v=hL52_nB5QSw QUEDE EN EL MINUTO 34:19
-
-PARA ENTRAR A LA VENV DEBO USAR LA BASH DE GIT Y USAR EL SIGUIENTE COMANDO:
-source env/Scripts/activate desde la carpeta Proyecto_API
-
-TODO: HACER LA ELIMINACION DE TIPO CARGO Y SEGUIR CON LOS DEMAS MODELOS PARA TRABAJAR EN LA WEB. PARA ESO
-DEBO MODIFICAR EL URLS.py dentro de la carpeta api segun lo que requiera
 '''
 
 class Tipo_bodeguero_view(View):

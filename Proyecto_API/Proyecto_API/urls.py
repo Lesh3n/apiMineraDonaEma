@@ -16,6 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+'''
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/', include('api.urls'))
+]
+
+Maneja las rutas, en caso de path('api/, include('api.urls')) en la dirección /api se incluyen las rutas
+en el script api/urls.py
+'''
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls'))

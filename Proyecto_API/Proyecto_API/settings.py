@@ -42,7 +42,10 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+'''
+En installed apps, se pone la aplicación api
+que fue creada con anterioridad
+'''
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,7 +56,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'api'
 ]
-
+'''
+Documentar el corseheaders
+'''
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
