@@ -10,6 +10,19 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
+'''
+Para poder usar la API Rest en react se debe de activar el CORS. Para activarlo se debe de usar pip install django-cors-headers
+Luego, ingresar "corsheaders" en INSTALLED_APPS y ingresar 'corsheaders.middleware.CorsMiddleware' en MIDDLEWARE.
+
+Abajo de MIDDLEWARE, se debe de crear una variable que guarde una tupla con un string, esto debe quedar asi
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost',
+)
+
+Aqui, se deben de poner otros dominios dependiendo si es que el CORS esta desactivado o no
+'''
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -37,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'api'
 ]
 
@@ -48,7 +62,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+)
 
 ROOT_URLCONF = 'Proyecto_API.urls'
 

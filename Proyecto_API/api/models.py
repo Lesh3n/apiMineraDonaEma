@@ -10,9 +10,9 @@ class Usuario(models.Model):
     idUsuario = models.AutoField(primary_key=True)
     nombre_propietario = models.CharField(max_length=80, blank=False, unique=False)
     apellido_propietario = models.CharField(max_length=80, blank=False, unique=False)
-    usuario = models.CharField(max_length=80, blank=False, unique=True)
+    nombre_usuario = models.CharField(max_length=80, blank=False, unique=True)
     contrasena = models.CharField(max_length=60, blank=False, unique=True)
-    idTipo_bodeguero = models.ForeignKey(Tipo_bodeguero, on_delete=models.CASCADE)
+    idTipo_bodeguero = models.ForeignKey(Tipo_bodeguero, on_delete=models.CASCADE, blank=False, null=True)
 
 
 class Tipo_objeto(models.Model):
