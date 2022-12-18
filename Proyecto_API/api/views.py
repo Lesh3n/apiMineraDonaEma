@@ -113,7 +113,7 @@ class Usuario_view(View):
             usuario.apellido_propietario = jd['apellido_propietario']
             usuario.nombre_usuario = jd['nombre_usuario']
             usuario.contrasena = jd['contrasena']
-            usuario.idTipo_bodeguero = jd['idTipo_bodeguero']
+            usuario.idTipo_bodeguero_id = jd['idTipo_bodeguero_id']
             usuario.save()
             datos = {'mensaje': "Usuario actualizado exitosamente!"}
         else:
@@ -180,7 +180,7 @@ class Tipo_objeto_view(View):
     def delete(self, request, id):
         tipos_objeto = list(Tipo_objeto.objects.filter(id_tipo = id).values())
         if len(tipos_objeto) > 0:
-            Tipo_objeto.objects.filter(idTipo_objeto = id).delete()
+            Tipo_objeto.objects.filter(id_tipo = id).delete()
             datos = {'mensaje':"Tipo objeto eliminado exitosamente!"}
         else:
             datos = {'mensaje': "Tipo de cargo no encontrado."}
@@ -227,6 +227,7 @@ class Objeto_view(View):
             objeto.cantidad = jd['cantidad']
             objeto.descripcion = jd['descripcion']
             objeto.prestatario = jd['prestatario']
+            objeto.id_tipo_id = jd['id_tipo_id']
             objeto.save()
             datos = {'mensaje': "Objeto actualizado exitosamente!"}
         else:
