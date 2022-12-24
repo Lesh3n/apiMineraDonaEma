@@ -122,7 +122,7 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 #borrar en local
 DATABASES = {
     'default': dj_database_url.config(        
-        default='postgresql://postgres:postgres@localhost:5432/mysite',        
+        default='postgres://api_muif_user:JcondFdLp8TWmf4NUMUAynG9Pe5GKIZ1@dpg-cejn1iha6gdkdn6d4mj0-a/api_muif',        
         conn_max_age=600
         )
 }
