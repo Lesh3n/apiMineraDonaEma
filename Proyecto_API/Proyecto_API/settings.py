@@ -25,6 +25,12 @@ Aqui, se deben de poner otros dominios dependiendo si es que el CORS esta desact
 
 from pathlib import Path
 
+import dj_database_url
+from decouple import config
+
+import pymysql  
+pymysql.install_as_MySQLdb()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,9 +42,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-zpifarxh78-cy_3nsmbm^9gr$b9yguk38iqto+vsvglm#d88ym'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -98,16 +104,20 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-import pymysql  
-pymysql.install_as_MySQLdb()
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'django_minera',
+#        'USER':'root',
+#       'PASSWORD':''
+#   }
+#}
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_minera',
-        'USER':'root',
-        'PASSWORD':''
-    }
+    'default': dj_database_url.config(
+        default = config('DATABASE_URL')
+    )
 }
 
 
