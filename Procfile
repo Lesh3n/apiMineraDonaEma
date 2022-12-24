@@ -1,1 +1,0 @@
-web: gunicorn apiMineraDonaEma.wsgi --log-file -
