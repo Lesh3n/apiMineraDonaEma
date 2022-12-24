@@ -1,1 +1,1 @@
-web: gunicorn api-minera-dona-ema.wsgi --log-file -
+web: gunicorn Proyecto_API.wsgi --log-file -
