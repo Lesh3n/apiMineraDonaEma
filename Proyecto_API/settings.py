@@ -28,9 +28,6 @@ from pathlib import Path
 import dj_database_url
 from decouple import config
 
-import pymysql  
-pymysql.install_as_MySQLdb()
-
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
