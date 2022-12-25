@@ -25,7 +25,7 @@ Aqui, se deben de poner otros dominios dependiendo si es que el CORS esta desact
 
 from pathlib import Path
 
-import dj_database_url
+
 from decouple import config
 
 import pymysql
@@ -46,7 +46,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','apidonaema.us-east-1.elasticbeanstalk.com','*']
+ALLOWED_HOSTS = ['*']
 
 
 
