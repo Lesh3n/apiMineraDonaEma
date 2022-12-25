@@ -28,6 +28,9 @@ from pathlib import Path
 import dj_database_url
 from decouple import config
 
+import pymysql
+pymysql.install_as_MySQLdb()
+
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -41,14 +44,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','apidonaema.us-east-1.elasticbeanstalk.com','*']
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
-if RENDER_EXTERNAL_HOSTNAME:    
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -110,22 +110,16 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'django_minera',
-#        'USER':'root',
-#       'PASSWORD':''
-#   }
-#}
-
-#borrar en local
 DATABASES = {
-    'default': dj_database_url.config(        
-        default='postgres://api_muif_user:JcondFdLp8TWmf4NUMUAynG9Pe5GKIZ1@dpg-cejn1iha6gdkdn6d4mj0-a/api_muif',        
-        conn_max_age=600
-        )
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_minera',
+        'USER':'root',
+        'PASSWORD':''
+   }
 }
+
+
 
 
 # Password validation
