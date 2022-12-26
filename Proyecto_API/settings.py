@@ -23,6 +23,8 @@ CORS_ORIGIN_WHITELIST = (
 Aqui, se deben de poner otros dominios dependiendo si es que el CORS esta desactivado o no
 '''
 
+#Ai$123456
+
 from pathlib import Path
 
 
@@ -110,14 +112,25 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_minera',
-        'USER':'root',
-        'PASSWORD':''
-   }
-}
+if os.getenv('GAE_APPLICATION', None):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': 'bdddonaema.mysql.database.azure.com',
+            'NAME': 'bdddonaema',
+            'USER': 'andres',
+            'PASSWORD': 'Ai$218294',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'django_minera',
+            'USER': 'root',
+            'PASSWORD': '',
+        }
+    }
 
 
 
