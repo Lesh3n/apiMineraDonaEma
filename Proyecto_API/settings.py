@@ -23,15 +23,14 @@ CORS_ORIGIN_WHITELIST = (
 Aqui, se deben de poner otros dominios dependiendo si es que el CORS esta desactivado o no
 '''
 
-#Ai$123456
+
 
 from pathlib import Path
 
+import dj_database_url
 
-from decouple import config
 
-import pymysql
-pymysql.install_as_MySQLdb()
+
 
 import os
 
@@ -46,11 +45,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = ['*']
 
-
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:    
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -112,25 +113,32 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 
-if os.getenv('GAE_APPLICATION', None):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'HOST': 'bdddonaema.mysql.database.azure.com',
-            'NAME': 'bdddonaema',
-            'USER': 'andres',
-            'PASSWORD': 'Ai$218294',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'django_minera',
-            'USER': 'root',
-            'PASSWORD': '',
-        }
-    }
+#if os.getenv('GAE_APPLICATION', None):
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.mysql',
+#            'HOST': 'bdddonaema.mysql.database.azure.com',
+#            'NAME': 'bdddonaema',
+#            'USER': 'andres',
+#            'PASSWORD': 'Ai$218294',
+#        }
+#    }
+#else:
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.mysql',
+#            'NAME': 'django_minera',
+#            'USER': 'root',
+#            'PASSWORD': '',
+#        }
+#    }
+
+DATABASES = {
+    'default': dj_database_url.config( 
+        default='postgresql://postgres:postgres@localhost:5432/mysite',        
+        conn_max_age=600    
+        )
+}
 
 
 
