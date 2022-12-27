@@ -134,14 +134,15 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 #    }
 
 DATABASES = {
-    'default': dj_database_url.config(      
-        conn_max_age=600,
-        host = 'dpg-cejn1iha6gdkdn6d4mj0-a',
-        port = '5432',
-        database = 'api_muif',
-        username = 'api_muif_user',
-        password = 'JcondFdLp8TWmf4NUMUAynG9Pe5GKIZ1'
-        )
+    'default': {
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'api_muif',
+        'USER':'api_muif_user',
+        'PASSWORD':'JcondFdLp8TWmf4NUMUAynG9Pe5GKIZ1',
+        'HOST' : 'dpg-cejn1iha6gdkdn6d4mj0-a',
+        'PORT' : '5432',
+        
+    }      
 }
 
 
