@@ -134,9 +134,13 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 #    }
 
 DATABASES = {
-    'default': dj_database_url.config( 
-        default='postgresql://postgres:postgres@localhost:5432/mysite',        
-        conn_max_age=600    
+    'default': dj_database_url.config(      
+        conn_max_age=600,
+        host = 'dpg-cejn1iha6gdkdn6d4mj0-a',
+        port = '5432',
+        database = 'api_muif',
+        username = 'api_muif_user',
+        password = 'JcondFdLp8TWmf4NUMUAynG9Pe5GKIZ1'
         )
 }
 
